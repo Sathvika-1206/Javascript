@@ -1,0 +1,96 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+.cover{
+  width:100%;
+  min-height:100vh;
+  position:relative;
+  /*not the background color , only the background property is allowed for linear-gradient*/
+  background:linear-gradient(45deg,#08001f,#30197d);
+  color:#fff;
+}
+
+.container{
+  width:500px;
+  height:200px;
+  position:absolute;
+  /*very important*/
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.clock{
+  width:100%;
+  height:100%;
+  border-radius:20px;
+  background:rgba(216, 126, 224, 0.11);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  backdrop-filter:blur(40px);
+  
+}
+
+.container::before{
+  /* pseudo element works with content being empty*/
+  content:"";
+  width:130px;
+  height:110px;
+  border-radius:5px;
+  z-index:1;
+  position:absolute;
+  background:rgb(236, 55, 55);
+  top:-20%;
+  left:-15%;
+  
+}
+
+.container::after{
+  /*write content first*/
+  content:" ";
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  z-index:1;
+  position:absolute;
+  top:60%;
+  left:85%;
+  background:rgb(98, 156, 237);
+}
+
+.container span{
+  font-size:60px;
+  text-align:center;
+  position:relative;
+  width:60px;
+  display:inline-block;
+}
+
+.container span::after{
+  /*PESUDO ELEMENT must have content property set to 0*/
+  content:" ";
+  font-size:13px;
+  position:absolute;
+  top:100%;
+  left:30px;
+  /*translation element that moves the element towards the horizantal axis transform:translateX */
+  transform:translateX(-50%);
+}
+
+/*while specifying span id also it should be a pseudo element to get recognized*/
+#hrs::after{
+  content:"HOURS";
+}
+
+#min::after{
+  content:"MINS";
+}
+
+#sec::after{
+  content:"SEC";
+}
